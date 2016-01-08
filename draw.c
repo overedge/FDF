@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:08:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/08 19:50:53 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/08 21:05:01 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,30 +54,26 @@ int			draw(t_env *map)
 
 	i = 0;
 	k = 0;
-	x = 0;
+	x = 10;
 	y = 30;
 	while(k != map->line - 1)
 	{
 		while(i != map->collum)
 		{
-			//AXE X
+		//	AXE X
 			if (map->cor[k][i] == map->cor[k][i + 1])
-				line(0, y, x, y, map);
-			if (map->cor[k][i] > map->cor[k][i + 1])
-				line(0, y, x, y, map);
+				line(x, y, x + 20, y, map);
 			if (map->cor[k][i] < map->cor[k][i + 1])
-				line(0, y, x, y, map);
+				line(x, y, x + 20, y + 30, map);
 			//AXE Y
 			if (map->cor[k][i] == map->cor[k + 1][i])
 				line(x, y, x, y + 30, map);
 			if (map->cor[k][i] < map->cor[k + 1][i])
-				line(x, y, x, y + 30, map);
-			if (map->cor[k][i] > map->cor[k + 1][i])
-				line(x, y, x, y + 30, map);
-			x += 25;
+				line(x, y, x + 20, y + 30, map);
+			x += 20;
 			i++;
 		}
-		x = 0;
+		x = 10;
 		i = 0;
 		k++;
 		y += 30;
