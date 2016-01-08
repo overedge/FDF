@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 18:54:37 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/07 20:58:16 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/08 17:06:06 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static int	ft_count_line(char *av)
 
 static int	ft_count_collum(char *av)
 {
-
 	int		i;
 	int		fd;
 	char	*line;
@@ -49,15 +48,14 @@ static int	ft_count_collum(char *av)
 	while (get_next_line(fd, &line))
 		free(line);
 	free(line);
-
-	while(tab[i])
+	while (tab[i])
 		i++;
 	free(tab);
 	close(fd);
 	return (i);
 }
 
-static void ft_insertdata(t_map *map, int fd)
+static void	ft_insertdata(t_env *map, int fd)
 {
 	char	*line;
 	char	**tab;
@@ -70,13 +68,13 @@ static void ft_insertdata(t_map *map, int fd)
 		j = 0;
 		get_next_line(fd, &line);
 		tab = ft_strsplit(line, ' ');
-		while(tab[j])
+		while (tab[j])
 			j++;
 		if (j != map->collum)
 			ft_exit("Check You Collum map file");
 		map->cor[i] = (int *)malloc(sizeof(int) * map->collum);
 		j = 0;
-		while(tab[j])
+		while (tab[j])
 		{
 			map->cor[i][j] = ft_atoi(tab[j]);
 			j++;
@@ -85,10 +83,10 @@ static void ft_insertdata(t_map *map, int fd)
 	}
 }
 
-void file(char *av, t_map *map)
+void		file(char *av, t_env *map)
 {
 	int		fd;
-	
+
 	map->line = ft_count_line(av);
 	map->collum = ft_count_collum(av);
 	map->cor = (int **)malloc(sizeof(int*) * map->line);

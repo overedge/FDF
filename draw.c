@@ -6,14 +6,81 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:08:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/07 20:46:06 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/08 19:50:53 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//int		draw(t_env *map)
-//{
-//	mlx_pixel_put(map->mlx, map->win, 300, 300, 0xFF0000);
-//	return (1);
-//}
+static void	line(int x0, int y0, int x1, int y1, t_env *map)
+{
+	int dx;
+	int sx;
+	int dy;
+	int sy;
+	int err;
+	int e2;
+
+	dx = ft_abs(x1 - x0);
+	sx = x0 < x1 ? 1 : -1;
+	dy = ft_abs(y1 - y0);
+	sy = y0 < y1 ? 1 : -1;
+	err = (dx > dy ? dx : -dy) / 2;
+	while (1)
+	{
+		mlx_pixel_put(map->mlx, map->win, x0, y0, 0xFF0000);
+		if (x0 == x1 && y0 == y1)
+			break ;
+		e2 = err;
+		if (e2 > -dx)
+		{
+			err -= dy;
+			x0 += sx;
+		}
+		if (e2 < dy)
+		{
+			err += dx;
+			y0 += sy;
+		}
+	}
+}
+
+int			draw(t_env *map)
+{
+	int		i;
+	int		k;
+	int		x;
+	int		y;
+
+	i = 0;
+	k = 0;
+	x = 0;
+	y = 30;
+	while(k != map->line - 1)
+	{
+		while(i != map->collum)
+		{
+			//AXE X
+			if (map->cor[k][i] == map->cor[k][i + 1])
+				line(0, y, x, y, map);
+			if (map->cor[k][i] > map->cor[k][i + 1])
+				line(0, y, x, y, map);
+			if (map->cor[k][i] < map->cor[k][i + 1])
+				line(0, y, x, y, map);
+			//AXE Y
+			if (map->cor[k][i] == map->cor[k + 1][i])
+				line(x, y, x, y + 30, map);
+			if (map->cor[k][i] < map->cor[k + 1][i])
+				line(x, y, x, y + 30, map);
+			if (map->cor[k][i] > map->cor[k + 1][i])
+				line(x, y, x, y + 30, map);
+			x += 25;
+			i++;
+		}
+		x = 0;
+		i = 0;
+		k++;
+		y += 30;
+	}
+	return (0);
+}
