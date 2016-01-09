@@ -17,25 +17,18 @@ static void	map_key(int keycode, t_env *control)
 	if (keycode == ESC)
 		exit(0);
 	if (keycode == RIGHT)
-	{
 		control->basex += 10;
-		draw(control);
-	}
 	if (keycode == LEFT)
-	{
 		control->basex -= 10;
-		draw(control);
-	}
 	if (keycode == TOP)
-	{
 		control->basey -= 10;
-		draw(control);
-	}
 	if (keycode == BOT)
-	{
 		control->basey += 10;
+	if (keycode == ZOOM)
+		control->size += 5;
+	if (keycode == DEZOOM)
+		control->size -= 5;
 		draw(control);
-	}
 }
 
 int			keyboard(int keycode, t_env *map)

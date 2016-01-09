@@ -20,8 +20,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define NAME "fdf"
-# define X_WIN 800
-# define Y_WIN 800
+# define X_WIN 600
+# define Y_WIN 600
 
 /*
 ** Map Of Keyboard
@@ -32,6 +32,7 @@
 # define LEFT 123
 # define RIGHT 124
 # define ZOOM 69
+# define DEZOOM 78
 
 typedef struct	s_env
 {
@@ -42,6 +43,7 @@ typedef struct	s_env
 	void	*win;
 	int		basex;
 	int		basey;
+	int		size;
 }				t_env;
 
 /*

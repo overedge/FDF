@@ -23,6 +23,7 @@ int		main(int ac, char **av)
 		ft_print_2d_tab(map.cor, map.line, map.collum);
 		map.basex = 30;
 		map.basey = 30;
+		map.size = 20;
 		window(&map);
 	}
 	else

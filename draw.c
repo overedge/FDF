@@ -65,53 +65,58 @@ int			draw(t_env *map)
 	int k;
 	int x;
 	int y;
+	int	size = map->size;
 
 
+	int iso = 300;
 	i = 0;
 	k = 0;
 	x = map->basex;
 	y = map->basey;
+
 	while(k != map->line)
 	{
 		while(i != map->collum - 1)
 		{
 			if (map->cor[k][i] == map->cor[k][i + 1])
-				line(x, y, x + 20, y, map, 0xFF0000);
+				line(x + iso, y, x + size + iso, y, map, 0xFF0000);
 			if (map->cor[k][i] < map->cor[k][i + 1])
-				line(x, y, x + 20,  y + 30, map, 0x0000FF);
+				line(x + iso, y, x + size + iso,  y, map, 0x0000FF);
 			if (map->cor[k][i] > map->cor[k][i + 1])
-			line(x, y, x + 20,  y - 30, map, 0x0000FF);
-			x += 20;
+				line(x + iso, y, x + size + iso,  y, map, 0x0000FF);
+			x += size;
 			i++;
 		}
 			x = map->basex;
 			i = 0;
 			k++;
-			y += 30;
+			y += size;
+			iso -= size;
 	}
 
 	i = 0;
 	k = 0;
 	x = map->basex;
 	y = map->basey;
-
+	iso = 300;
 	while(k != map->line - 1)
 	{
 		while(i != map->collum)
 		{
 			if (map->cor[k][i] == map->cor[k + 1][i])
-				line(x, y, x , y + 30, map, 0xFF0000);
+				line(x + iso, y, x + iso - size, y + size, map, 0xFF0000);
 			if (map->cor[k][i] < map->cor[k + 1][i])
-				line(x, y, x - 20, y + 30, map, 0x0000FF);
+				line(x + iso, y, x + iso - size, y + size,  map, 0x0000FF);
 			if (map->cor[k][i] > map->cor[k + 1][i])
-				line(x, y, x + 20, y + 30, map, 0x0000FF);
-		 x += 20;
+				line(x + iso, y, x + iso - size, y + size, map, 0x0000FF);
+		 x += size;
 		 i++;
 		}
 			x = map->basex;
 			i = 0;
 			k++;
-			y += 30;
+			y += size;
+			iso -= size;
 	}
 	return (0);
 }
