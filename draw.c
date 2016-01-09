@@ -6,13 +6,13 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:08:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/08 21:05:01 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/09 16:37:52 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	line(int x0, int y0, int x1, int y1, t_env *map)
+static void	line(int x0, int y0, int x1, int y1, t_env *map, int color)
 {
 	int dx;
 	int sx;
@@ -28,7 +28,7 @@ static void	line(int x0, int y0, int x1, int y1, t_env *map)
 	err = (dx > dy ? dx : -dy) / 2;
 	while (1)
 	{
-		mlx_pixel_put(map->mlx, map->win, x0, y0, 0xFF0000);
+		mlx_pixel_put(map->mlx, map->win, x0, y0, color);
 		if (x0 == x1 && y0 == y1)
 			break ;
 		e2 = err;
@@ -45,38 +45,73 @@ static void	line(int x0, int y0, int x1, int y1, t_env *map)
 	}
 }
 
+static void ft_black_screen(t_env *map)
+{
+	int y;
+
+	y = 0;
+	while (y < Y_WIN)
+	{
+		line(0, y, X_WIN, y, map, 0x000000);
+		y++;
+	}
+}
+
 int			draw(t_env *map)
 {
-	int		i;
-	int		k;
-	int		x;
-	int		y;
+	ft_black_screen(map);
+
+	int i;
+	int k;
+	int x;
+	int y;
+
 
 	i = 0;
 	k = 0;
-	x = 10;
-	y = 30;
+	x = map->basex;
+	y = map->basey;
+	while(k != map->line)
+	{
+		while(i != map->collum - 1)
+		{
+			if (map->cor[k][i] == map->cor[k][i + 1])
+				line(x, y, x + 20, y, map, 0xFF0000);
+			if (map->cor[k][i] < map->cor[k][i + 1])
+				line(x, y, x + 20,  y + 30, map, 0x0000FF);
+			if (map->cor[k][i] > map->cor[k][i + 1])
+			line(x, y, x + 20,  y - 30, map, 0x0000FF);
+			x += 20;
+			i++;
+		}
+			x = map->basex;
+			i = 0;
+			k++;
+			y += 30;
+	}
+
+	i = 0;
+	k = 0;
+	x = map->basex;
+	y = map->basey;
+
 	while(k != map->line - 1)
 	{
 		while(i != map->collum)
 		{
-		//	AXE X
-			if (map->cor[k][i] == map->cor[k][i + 1])
-				line(x, y, x + 20, y, map);
-			if (map->cor[k][i] < map->cor[k][i + 1])
-				line(x, y, x + 20, y + 30, map);
-			//AXE Y
 			if (map->cor[k][i] == map->cor[k + 1][i])
-				line(x, y, x, y + 30, map);
+				line(x, y, x , y + 30, map, 0xFF0000);
 			if (map->cor[k][i] < map->cor[k + 1][i])
-				line(x, y, x + 20, y + 30, map);
-			x += 20;
-			i++;
+				line(x, y, x - 20, y + 30, map, 0x0000FF);
+			if (map->cor[k][i] > map->cor[k + 1][i])
+				line(x, y, x + 20, y + 30, map, 0x0000FF);
+		 x += 20;
+		 i++;
 		}
-		x = 10;
-		i = 0;
-		k++;
-		y += 30;
+			x = map->basex;
+			i = 0;
+			k++;
+			y += 30;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 14:48:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/08 19:50:55 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/09 14:22:40 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct	s_env
 	int		collum;
 	void	*mlx;
 	void	*win;
-	void	*image;
-	int		zoom;
+	int		basex;
+	int		basey;
 }				t_env;
 
 /*
