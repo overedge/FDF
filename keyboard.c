@@ -28,6 +28,10 @@ static void	map_key(int keycode, t_env *control)
 		control->size += 5;
 	if (keycode == DEZOOM)
 		control->size -= 5;
+	if (keycode == ELEVATE)
+		ft_modify_tab(control, 1);
+	if (keycode == DOWN)
+		ft_modify_tab(control, 0);
 		draw(control);
 }
 

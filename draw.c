@@ -68,7 +68,7 @@ int			draw(t_env *map)
 	int	size = map->size;
 
 
-	int iso = 300;
+	int iso = 200;
 	i = 0;
 	k = 0;
 	x = map->basex;
@@ -79,11 +79,11 @@ int			draw(t_env *map)
 		while(i != map->collum - 1)
 		{
 			if (map->cor[k][i] == map->cor[k][i + 1])
-				line(x + iso, y, x + size + iso, y, map, 0xFF0000);
+				line(x + iso, y - map->cor[k][i], x + size + iso, y - map->cor[k][i], map, 0xFF0000);
 			if (map->cor[k][i] < map->cor[k][i + 1])
-				line(x + iso, y, x + size + iso,  y, map, 0x0000FF);
+				line(x + iso, y, x + size + iso,  y - map->cor[k][i + 1], map, 0x00FF00);
 			if (map->cor[k][i] > map->cor[k][i + 1])
-				line(x + iso, y, x + size + iso,  y, map, 0x0000FF);
+				line(x + iso, y - map->cor[k][i], x + size + iso,  y, map, 0x00FF00);
 			x += size;
 			i++;
 		}
@@ -98,17 +98,17 @@ int			draw(t_env *map)
 	k = 0;
 	x = map->basex;
 	y = map->basey;
-	iso = 300;
+	iso = 200;
 	while(k != map->line - 1)
 	{
 		while(i != map->collum)
 		{
 			if (map->cor[k][i] == map->cor[k + 1][i])
-				line(x + iso, y, x + iso - size, y + size, map, 0xFF0000);
+				line(x + iso, y - map->cor[k][i], x + iso - size, y + size - map->cor[k][i], map, 0xFF0000);
 			if (map->cor[k][i] < map->cor[k + 1][i])
-				line(x + iso, y, x + iso - size, y + size,  map, 0x0000FF);
+				line(x + iso, y, x + iso - size, y + size - map->cor[k + 1][i],  map, 0x00FF00);
 			if (map->cor[k][i] > map->cor[k + 1][i])
-				line(x + iso, y, x + iso - size, y + size, map, 0x0000FF);
+				line(x + iso, y - map->cor[k][i], x + iso - size, y + size, map, 0x00FF00);
 		 x += size;
 		 i++;
 		}

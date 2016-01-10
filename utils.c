@@ -37,3 +37,24 @@ void	ft_print_2d_tab(int **tab, int line, int collum)
 		i++;
 	}
 }
+
+void	ft_modify_tab(t_env *control, int ratio)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i != control->line)
+	{
+		j = 0;
+		while (j != control->collum)
+		{
+			if (ratio == 1)
+				control->cor[i][j] *= 1.5;
+			if (ratio == 0)
+				control->cor[i][j] /= -1.5;
+			j++;
+		}
+		i++;
+	}
+}

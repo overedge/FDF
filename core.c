@@ -21,9 +21,9 @@ int		main(int ac, char **av)
 		file(av[1], &map);
 		printf("line : %d \n collum : %d \n", map.line, map.collum);
 		ft_print_2d_tab(map.cor, map.line, map.collum);
-		map.basex = 30;
-		map.basey = 30;
-		map.size = 20;
+		map.basex = 450;
+		map.basey = 450;
+		map.size = 10;
 		window(&map);
 	}
 	else

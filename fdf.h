@@ -20,8 +20,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define NAME "fdf"
-# define X_WIN 600
-# define Y_WIN 600
+# define X_WIN 1000
+# define Y_WIN 1000
 
 /*
 ** Map Of Keyboard
@@ -33,6 +33,8 @@
 # define RIGHT 124
 # define ZOOM 69
 # define DEZOOM 78
+# define ELEVATE 31
+# define DOWN 37
 
 typedef struct	s_env
 {
@@ -71,5 +73,5 @@ int				keyboard(int keycode, t_env *map);
 
 void			ft_exit(char *error);
 void			ft_print_2d_tab(int **tab, int line, int collum);
-
+void			ft_modify_tab(t_env *control,    int ratio);
 #endif
