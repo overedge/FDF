@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:08:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/09 16:37:52 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:18:27 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,66 +57,86 @@ static void ft_black_screen(t_env *map)
 	}
 }
 
+static int color(int i)
+{
+	if (i <= 0)
+		return (0x0000FF); // BLEU OK
+	if (i <= 2)
+		return (0xFFFF00); // JAUNE
+	if (i <= 30)
+		return (0x00FF00); //VERT
+	if (i <= 40)
+		return (0x33CCFF);//BLEU CIEL
+	if (i <= 50)
+		return (0x993300);  // Marron // OK
+	if (i > 50)
+		return (0xFFFFFF);  // BLANC // OK
+	return (0xFF00FF);
+}
+static void ft_generate_x_axes(t_env *e, int iso, int size, t_trace *t)
+{
+	int		c;
+	while (t->k != e->line)
+	{
+		while (t->i != e->collum - 1)
+		{
+			c = e->cor[t->k][t->i];
+			if (e->cor[t->k][t->i] == e->cor[t->k][t->i + 1])
+				line(t->x + iso, t->y - e->cor[t->k][t->i], t->x + size + iso, t->y - e->cor[t->k][t->i], e, color(c));
+			if (e->cor[t->k][t->i] < e->cor[t->k][t->i + 1])
+				line(t->x + iso, t->y, t->x + size + iso, t->y - e->cor[t->k][t->i + 1], e, color(c));
+			if (e->cor[t->k][t->i] > e->cor[t->k][t->i + 1])
+				line(t->x + iso, t->y - e->cor[t->k][t->i], t->x + size + iso, t->y, e, color(c));
+			t->x += size;
+			t->i++;
+		}
+		t->x = e->basex;
+		t->i = 0;
+		t->k++;
+		t->y += size;
+		iso -= size;
+	}
+}
+
+static void		ft_generate_y_axes(t_env *e, int iso, int size, t_trace *t)
+{
+	int		c;
+	while (t->k != e->line - 1)
+	{
+		while (t->i != e->collum)
+		{
+			c = e->cor[t->k][t->i];
+			if (e->cor[t->k][t->i] == e->cor[t->k + 1][t->i])
+				line(t->x + iso, t->y - e->cor[t->k][t->i], t->x + iso - size, t->y + size - e->cor[t->k][t->i], e, color(c));
+			if (e->cor[t->k][t->i] < e->cor[t->k + 1][t->i])
+				line(t->x + iso, t->y, t->x + iso - size, t->y + size - e->cor[t->k + 1][t->i], e, color(c));
+			if (e->cor[t->k][t->i] > e->cor[t->k + 1][t->i])
+				line(t->x + iso, t->y - e->cor[t->k][t->i], t->x + iso - size, t->y + size, e, color(c));
+			t->x += size;
+			t->i++;
+		}
+		t->x = e->basex;
+		t->i = 0;
+		t->k++;
+		t->y += size;
+		iso -= size;
+	}
+}
+
 int			draw(t_env *map)
 {
+	t_trace trace;
+
+	trace.i = 0;
+	trace.k = 0;
+	trace.x = map->basex;
+	trace.y = map->basey;
 	ft_black_screen(map);
-
-	int i;
-	int k;
-	int x;
-	int y;
-	int	size = map->size;
-
-
-	int iso = 200;
-	i = 0;
-	k = 0;
-	x = map->basex;
-	y = map->basey;
-
-	while(k != map->line)
-	{
-		while(i != map->collum - 1)
-		{
-			if (map->cor[k][i] == map->cor[k][i + 1])
-				line(x + iso, y - map->cor[k][i], x + size + iso, y - map->cor[k][i], map, 0xFF0000);
-			if (map->cor[k][i] < map->cor[k][i + 1])
-				line(x + iso, y, x + size + iso,  y - map->cor[k][i + 1], map, 0x00FF00);
-			if (map->cor[k][i] > map->cor[k][i + 1])
-				line(x + iso, y - map->cor[k][i], x + size + iso,  y, map, 0x00FF00);
-			x += size;
-			i++;
-		}
-			x = map->basex;
-			i = 0;
-			k++;
-			y += size;
-			iso -= size;
-	}
-
-	i = 0;
-	k = 0;
-	x = map->basex;
-	y = map->basey;
-	iso = 200;
-	while(k != map->line - 1)
-	{
-		while(i != map->collum)
-		{
-			if (map->cor[k][i] == map->cor[k + 1][i])
-				line(x + iso, y - map->cor[k][i], x + iso - size, y + size - map->cor[k][i], map, 0xFF0000);
-			if (map->cor[k][i] < map->cor[k + 1][i])
-				line(x + iso, y, x + iso - size, y + size - map->cor[k + 1][i],  map, 0x00FF00);
-			if (map->cor[k][i] > map->cor[k + 1][i])
-				line(x + iso, y - map->cor[k][i], x + iso - size, y + size, map, 0x00FF00);
-		 x += size;
-		 i++;
-		}
-			x = map->basex;
-			i = 0;
-			k++;
-			y += size;
-			iso -= size;
-	}
+	ft_generate_x_axes(map, 200, map->size, &trace);
+	trace.i = 0;
+	trace.k = 0;
+	trace.x = map->basex;
+	trace.y = map->basey;
+	ft_generate_y_axes(map, 200, map->size, &trace);
 	return (0);
 }

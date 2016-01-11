@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 14:48:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/09 14:22:40 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/11 12:18:52 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ typedef struct	s_env
 	int		size;
 }				t_env;
 
+typedef struct s_trace
+{
+	int i;
+	int	k;
+	int x;
+	int y;
+}				t_trace;
 /*
 ** Window fuctions
 */
