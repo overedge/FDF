@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 14:48:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/11 12:18:52 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/12 18:05:41 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,15 @@
 # define DEZOOM 78
 # define ELEVATE 31
 # define DOWN 37
-
+/*
+** Colors Defines
+*/
+# define BLUE 0x0000FF
+# define YELLOW 0xFFFF00
+# define GREEN 0x00FF00
+# define TURQ 0x33CCFF
+# define BROWN 0x993300
+# define WHITE 0xFFFFFF
 typedef struct	s_env
 {
 	int		**cor;
@@ -64,6 +72,7 @@ void			window(t_env *win);
 ** Draw fuctions
 */
 int				draw(t_env *map);
+void			line(int x0, int y0, int x1, int y1, t_env *map, int color);
 
 /*
 ** File fuctions
@@ -81,4 +90,6 @@ int				keyboard(int keycode, t_env *map);
 void			ft_exit(char *error);
 void			ft_print_2d_tab(int **tab, int line, int collum);
 void			ft_modify_tab(t_env *control,    int ratio);
+int				color(int i);
+void			ft_black_screen(t_env *map);
 #endif
