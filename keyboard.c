@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:14:59 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/12 17:25:13 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/12 22:07:19 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@ static void	map_key(int keycode, t_env *control)
 	if (keycode == ESC)
 		exit(0);
 	else if (keycode == RIGHT)
-		control->basex += 10;
+		control->basex += 75;
 	else if (keycode == LEFT)
-		control->basex -= 10;
+		control->basex -= 50;
 	else if (keycode == TOP)
 		control->basey -= 10;
 	else if (keycode == BOT)
 		control->basey += 10;
 	else if (keycode == ZOOM)
-		control->size += 5;
+		control->size += 3;
 	else if (keycode == DEZOOM)
-		control->size -= 5;
+	{
+		if (control->size >= 3)
+			control->size -= 1;
+	}
 	else if (keycode == ELEVATE)
 		ft_modify_tab(control, 1);
 	else if (keycode == DOWN)

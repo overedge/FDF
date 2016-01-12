@@ -6,12 +6,12 @@
 	#    By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+         #
 	#                                                 +#+#+#+#+#+   +#+            #
 	#    Created: 2015/12/28 16:04:43 by nahmed-m          #+#    #+#              #
-	#    Updated: 2016/01/07 20:22:23 by nahmed-m         ###   ########.fr        #
+#    Updated: 2016/01/12 21:42:44 by nahmed-m         ###   ########.fr        #
 	#                                                                              #
 	# **************************************************************************** #
 	#
 
-SRC_NAME = core.c window.c file.c utils.c draw.c keyboard.c
+SRC_NAME = core.c window.c file.c utils.c draw.c keyboard.c overlay.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

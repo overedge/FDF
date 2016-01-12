@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:08:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/12 18:05:36 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/12 21:41:49 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ int			draw(t_env *map)
 	trace.x = map->basex;
 	trace.y = map->basey;
 	ft_generate_y_axes(map, 200, map->size, &trace);
+	ft_set_overlay(map);
 	return (0);
 }

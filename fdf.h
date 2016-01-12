@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 14:48:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/12 18:05:41 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/12 21:47:24 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct	s_env
 	int		basex;
 	int		basey;
 	int		size;
+	char	*filename;
 }				t_env;
 
 typedef struct s_trace
@@ -86,10 +87,13 @@ int				keyboard(int keycode, t_env *map);
 /*
 ** Utils fuctions
 */
-
 void			ft_exit(char *error);
 void			ft_print_2d_tab(int **tab, int line, int collum);
 void			ft_modify_tab(t_env *control,    int ratio);
 int				color(int i);
 void			ft_black_screen(t_env *map);
+/*
+** Overlay fuctions
+*/
+void			ft_set_overlay(t_env *e);
 #endif
