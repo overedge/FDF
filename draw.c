@@ -6,46 +6,46 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:08:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/12 21:41:49 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/13 14:04:55 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	line(int x0, int y0, int x1, int y1, t_env *map, int color)
-{
-	int dx;
-	int sx;
-	int dy;
-	int sy;
-	int err;
-	int e2;
+//void	line(int x0, int y0, int x1, int y1, t_env *map, int color)
+//{
+//	int dx;
+//	int sx;
+//	int dy;
+//	int sy;
+//	int err;
+//	int e2;
+//
+//	dx = ft_abs(x1 - x0);
+//	sx = x0 < x1 ? 1 : -1;
+//	dy = ft_abs(y1 - y0);
+//	sy = y0 < y1 ? 1 : -1;
+//	err = (dx > dy ? dx : -dy) / 2;
+//	while (1)
+//	{
+//		mlx_pixel_put(map->mlx, map->win, x0, y0, color);
+//		if (x0 == x1 && y0 == y1)
+//			break ;
+//		e2 = err;
+//		if (e2 > -dx)
+//		{
+//			err -= dy;
+//			x0 += sx;
+//		}
+//		if (e2 < dy)
+//		{
+//			err += dx;
+//			y0 += sy;
+//		}
+//	}
+//`}
 
-	dx = ft_abs(x1 - x0);
-	sx = x0 < x1 ? 1 : -1;
-	dy = ft_abs(y1 - y0);
-	sy = y0 < y1 ? 1 : -1;
-	err = (dx > dy ? dx : -dy) / 2;
-	while (1)
-	{
-		mlx_pixel_put(map->mlx, map->win, x0, y0, color);
-		if (x0 == x1 && y0 == y1)
-			break ;
-		e2 = err;
-		if (e2 > -dx)
-		{
-			err -= dy;
-			x0 += sx;
-		}
-		if (e2 < dy)
-		{
-			err += dx;
-			y0 += sy;
-		}
-	}
-}
-
-static void ft_generate_x_axes(t_env *e, int i, int s, t_trace *t)
+static void		ft_generate_x_axes(t_env *e, int i, int s, t_trace *t)
 {
 	int		c;
 
