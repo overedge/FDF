@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 17:08:03 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/12 21:48:22 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/13 15:50:13 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		main(int ac, char **av)
 		map.basey = 450;
 		map.size = 10;
 		map.filename = av[1];
+
 		window(&map);
 	}
 	else

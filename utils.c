@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/02 20:23:07 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/12 18:05:03 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:04:07 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,17 @@ int		color(int i)
 
 void ft_black_screen(t_env *map)
 {
-	int y;
+	int		x = 0;
+	int		y = 0;
 
-	y = 0;
-	while (y < Y_WIN)
+	while (y <= Y_WIN)
 	{
-		line(0, y, X_WIN, y, map, 0x000000);
+		while (x <= X_WIN)
+		{
+			mlx_pixel_put(map->mlx, map->win, x, y, 0x000000);
+			x++;
+		}
 		y++;
+		x = 0;
 	}
 }

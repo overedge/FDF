@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:45:30 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/13 14:03:15 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:14:09 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** Size Of buffer For GET_NEXT_LINE
 ** Increase It ! For Big File !
 */
-# define BUFF_SIZE 1
+# define BUFF_SIZE 25000
 
 /*
 ** Maximum Of File Descriptor For

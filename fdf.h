@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 14:48:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/13 13:51:08 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:33:33 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct	s_env
 	int		basey;
 	int		size;
 	char	*filename;
+	int		color;
 }				t_env;
 
 typedef struct	s_trace
@@ -111,6 +112,6 @@ void			ft_set_overlay(t_env *e);
 /*
 ** Bresenham Fuctions
 */
-void			line(t_cor *p, t_env *map, int color);
+void			line(int x0, int y0, int x1, int y1, t_env *map);
 
 #endif
