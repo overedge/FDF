@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 14:48:29 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/13 16:33:33 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/13 18:01:47 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct	s_env
 typedef struct	s_trace
 {
 	int i;
-	int	k;
+	int k;
 	int x;
 	int y;
 }				t_trace;
@@ -72,12 +72,18 @@ typedef struct	s_cor
 {
 
 	int dx;
-	int	sx;
+	int sx;
 	int dy;
 	int sy;
 	int err;
 	int e2;
 }				t_cor;
+
+typedef struct	s_pos
+{
+	int x;
+	int y;
+}				t_pos;
 /*
 ** Window fuctions
 */
@@ -87,6 +93,13 @@ void			window(t_env *win);
 ** Draw fuctions
 */
 int				draw(t_env *map);
+void			line(t_pos *p1, t_pos *p2, t_env *map);
+void			ft_gen_x_axes_mid(t_env *e, int i, int s, t_trace *t);
+void			ft_gen_x_axes_top(t_env *e, int i, int s, t_trace *t);
+void			ft_gen_x_axes_bot(t_env *e, int i, int s, t_trace *t);
+void			ft_gen_y_axes_mid(t_env *e, int i, int s, t_trace *t);
+void			ft_gen_y_axes_top(t_env *e, int i, int s, t_trace *t);
+void			ft_gen_y_axes_bot(t_env *e, int i, int s, t_trace *t);
 
 /*
 ** File fuctions
@@ -109,9 +122,5 @@ void			ft_black_screen(t_env *map);
 ** Overlay fuctions
 */
 void			ft_set_overlay(t_env *e);
-/*
-** Bresenham Fuctions
-*/
-void			line(int x0, int y0, int x1, int y1, t_env *map);
 
 #endif
