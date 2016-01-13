@@ -18,19 +18,22 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 NAME = fdf
 
 $(NAME) :
-		make -C libft/ fclean && make -C libft/
-		@make -C minilibx_macos/ clean && make -C minilibx_macos
-		@cp minilibx_macos/mlx.h libft/includes
-		gcc -Werror -Wextra -Wall $(SRC_NAME) -c -I./libft/includes
+	make -C libft/ fclean && make -C libft/
+	make -C minilibx_macos/ clean && make -C minilibx_macos
+	cp minilibx_macos/mlx.h libft/includes/
+	gcc -Werror -Wextra -Wall $(SRC_NAME) -c -I./libft/includes
 	gcc -o $(NAME) $(OBJ_NAME) -L./minilibx_macos -lmlx -framework OpenGL -framework AppKit -L./libft/ -lft
 
 all : $(NAME)
 
 clean :
 	rm -rf $(OBJ_NAME)
+	make -C libft/ clean
 
 fclean : clean
 	rm -rf $(NAME)
+	make -C libft/ fclean
+	make -C minilibx_macos/ clean
 
 re : fclean all
 

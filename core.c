@@ -29,5 +29,5 @@ int		main(int ac, char **av)
 		window(&map);
 	}
 	else
-		ft_exit("Bad Numbers Of Args");
+		ft_exit("Usage : ./fdf <path_of_map>");
 }

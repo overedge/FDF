@@ -40,59 +40,6 @@ void		line(t_pos *p1, t_pos *p2, t_env *map)
 	}
 }
 
-static void		ft_generate_x_axes(t_env *e, int i, int s, t_trace *t)
-{
-	while (t->k != e->line)
-	{
-		while (t->i != e->collum - 1)
-		{
-			e->color = color(e->cor[t->k][t->i]);
-			if (e->cor[t->k][t->i] == e->cor[t->k][t->i + 1])
-				line(t->x + i, t->y - e->cor[t->k][t->i], t->x + s + i, t->y \
-					- e->cor[t->k][t->i], e);
-			else if (e->cor[t->k][t->i] < e->cor[t->k][t->i + 1])
-				line(t->x + i, t->y - e->cor[t->k][t->i], t->x + s + i, t->y \
-					- e->cor[t->k][t->i + 1], e);
-			else if (e->cor[t->k][t->i] > e->cor[t->k][t->i + 1])
-				line(t->x + i, t->y - e->cor[t->k][t->i], t->x + s + i, t->y \
-					- e->cor[t->k][t->i + 1], e);
-			t->x += s;
-			t->i++;
-		}
-		t->x = e->basex;
-		t->i = 0;
-		t->k++;
-		t->y += s;
-		i -= s;
-	}
-}
-
-static void		ft_generate_y_axes(t_env *e, int i, int s, t_trace *t)
-{
-	while (t->k != e->line - 1)
-	{
-		while (t->i != e->collum)
-		{
-			e->color = color(e->cor[t->k][t->i]);
-			if (e->cor[t->k][t->i] == e->cor[t->k + 1][t->i])
-				line(t->x + i, t->y - e->cor[t->k][t->i], t->x + i - s, t->y \
-					+ s - e->cor[t->k][t->i], e);
-			else if (e->cor[t->k][t->i] < e->cor[t->k + 1][t->i])
-				line(t->x + i, t->y - e->cor[t->k][t->i], t->x + i - s, t->y \
-					+ s - e->cor[t->k + 1][t->i], e);
-			else if (e->cor[t->k][t->i] > e->cor[t->k + 1][t->i])
-				line(t->x + i, t->y - e->cor[t->k][t->i], t->x + i - s, t->y \
-					+ s - e->cor[t->k + 1][t->i], e);
-			t->x += s;
-			t->i++;
-		}
-		t->x = e->basex;
-		t->i = 0;
-		t->k++;
-		t->y += s;
-		i -= s;
-	}
-}
 
 static void ft_selector_ft(int i, t_env *e, int iso, t_trace *t)
 {
@@ -101,13 +48,9 @@ static void ft_selector_ft(int i, t_env *e, int iso, t_trace *t)
 	if (i == 1)
 		ft_gen_x_axes_top(e, iso, e->size, t);
 	if (i == 2)
-		ft_gen_x_axes_bot(e, iso, e->size, t);
-	if (i == 3)
 		ft_gen_y_axes_mid(e, iso, e->size, t);
-	if (i == 4)
+	if (i == 3)
 		ft_gen_y_axes_top(e, iso, e->size, t);
-	if (i == 5)
-		ft_gen_y_axes_bot(e, iso, e->size, t);
 }
 
 int		draw(t_env *map)
@@ -117,13 +60,14 @@ int		draw(t_env *map)
 
 	i = 0;
 	ft_black_screen(map);
-	while(i <  5)
+	while(i <=  3)
 	{
 		trace.i = 0;
 		trace.k = 0;
 		trace.x = map->basex;
 		trace.y = map->basey;
 		ft_selector_ft(i, map, 200, &trace);
+		i++;
 	}
 	ft_set_overlay(map);
 	return (0);

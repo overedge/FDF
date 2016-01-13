@@ -96,10 +96,8 @@ int				draw(t_env *map);
 void			line(t_pos *p1, t_pos *p2, t_env *map);
 void			ft_gen_x_axes_mid(t_env *e, int i, int s, t_trace *t);
 void			ft_gen_x_axes_top(t_env *e, int i, int s, t_trace *t);
-void			ft_gen_x_axes_bot(t_env *e, int i, int s, t_trace *t);
 void			ft_gen_y_axes_mid(t_env *e, int i, int s, t_trace *t);
 void			ft_gen_y_axes_top(t_env *e, int i, int s, t_trace *t);
-void			ft_gen_y_axes_bot(t_env *e, int i, int s, t_trace *t);
 
 /*
 ** File fuctions
