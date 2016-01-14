@@ -6,13 +6,13 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:08:47 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/13 18:01:45 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/14 11:56:44 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		line(t_pos *p1, t_pos *p2, t_env *map)
+void			line(t_pos *p1, t_pos *p2, t_env *map)
 {
 	t_cor t;
 
@@ -40,8 +40,7 @@ void		line(t_pos *p1, t_pos *p2, t_env *map)
 	}
 }
 
-
-static void ft_selector_ft(int i, t_env *e, int iso, t_trace *t)
+static void		ft_selector_ft(int i, t_env *e, int iso, t_trace *t)
 {
 	if (i == 0)
 		ft_gen_x_axes_mid(e, iso, e->size, t);
@@ -53,14 +52,14 @@ static void ft_selector_ft(int i, t_env *e, int iso, t_trace *t)
 		ft_gen_y_axes_top(e, iso, e->size, t);
 }
 
-int		draw(t_env *map)
+int				draw(t_env *map)
 {
 	int		i;
 	t_trace trace;
 
 	i = 0;
 	ft_black_screen(map);
-	while(i <=  3)
+	while (i <= 3)
 	{
 		trace.i = 0;
 		trace.k = 0;

@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/02 20:23:07 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/13 16:04:07 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/14 11:59:04 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ int		color(int i)
 		return (WHITE);
 }
 
-void ft_black_screen(t_env *map)
+void	ft_black_screen(t_env *map)
 {
-	int		x = 0;
-	int		y = 0;
+	int		x;
+	int		y;
 
+	x = 0;
+	y = 0;
 	while (y <= Y_WIN)
 	{
 		while (x <= X_WIN)

@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 17:08:03 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/13 15:50:13 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/14 13:05:08 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ int		main(int ac, char **av)
 	if (ac == 2)
 	{
 		file(av[1], &map);
-		printf("line : %d \n collum : %d \n", map.line, map.collum);
 		ft_print_2d_tab(map.cor, map.line, map.collum);
 		map.basex = 450;
 		map.basey = 450;
 		map.size = 10;
 		map.filename = av[1];
-
 		window(&map);
 	}
 	else

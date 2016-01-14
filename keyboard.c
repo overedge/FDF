@@ -6,7 +6,7 @@
 /*   By: nahmed-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 20:14:59 by nahmed-m          #+#    #+#             */
-/*   Updated: 2016/01/12 22:07:19 by nahmed-m         ###   ########.fr       */
+/*   Updated: 2016/01/14 13:05:47 by nahmed-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	map_key(int keycode, t_env *control)
 
 int			keyboard(int keycode, t_env *map)
 {
-	printf("key : %d\n", keycode);
 	map_key(keycode, map);
 	return (0);
 }
