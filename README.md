@@ -1,5 +1,5 @@
 # FDF
-![Image of Screen](https://github.com/overedge/FDF/blob/master/result.png?raw=true)
+![Image of Screen](https://github.com/overedge/FDF/blob/master/screen.png?raw=true)
 
 # Only Work for mac user (El capitan realease)
 
