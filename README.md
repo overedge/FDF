@@ -15,10 +15,12 @@ $ make clean
 $ ./fdf maps/42.fdf
 ```
 ### Commands
-| USAGE         | Second Header |
+| Usage       | Commands |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| QUIT  | ECS  |
+| ZOOM +/-  | +/- (PAVNUM)  |
+| MOVE  | ARROW ← ↑ →  |
+| INCREASE 3D +-  | o/l |
 
 ### Result
 ![Image of Result](https://github.com/overedge/FDF/blob/master/result.png?raw=true)
